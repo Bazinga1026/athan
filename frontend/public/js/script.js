@@ -17,6 +17,9 @@ const translations = {
         nowText: 'آن',
         nextPrayerLabel: 'الصلاة القادمة',
         loadError: 'خطأ في تحميل البيانات',
+        settingsLang: 'اللغة',
+        settingsFormat: 'التوقيت',
+        settingsTheme: 'المظهر',
         prayers: {
             Fajr: 'الفجر',
             Dhuhr: 'الظهر',
@@ -35,6 +38,9 @@ const translations = {
         nowText: 'now',
         nextPrayerLabel: 'Next Prayer',
         loadError: 'Error loading data',
+        settingsLang: 'Language',
+        settingsFormat: 'Format',
+        settingsTheme: 'Theme',
         prayers: {
             Fajr: 'Fajr',
             Dhuhr: 'Dhuhr',
@@ -58,6 +64,9 @@ function tPrayer(name) {
 function updateLanguage() {
     document.getElementById('lang-btn').textContent = t('langBtn');
     document.getElementById('footer-text').textContent = t('footer');
+    document.getElementById('settings-lang-label').textContent = t('settingsLang');
+    document.getElementById('settings-format-label').textContent = t('settingsFormat');
+    document.getElementById('settings-theme-label').textContent = t('settingsTheme');
     document.getElementById('fajr-name').textContent = tPrayer('Fajr');
     document.getElementById('dhuhr-name').textContent = tPrayer('Dhuhr');
     document.getElementById('asr-name').textContent = tPrayer('Asr');
@@ -160,6 +169,8 @@ function parseTime(timeStr) {
     const [hours, minutes] = timeStr.split(':').map(Number);
     return hours * 60 + minutes;
 }
+
+const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
 function getTimerState() {
     const now = new Date();
@@ -266,10 +277,19 @@ function getShareText() {
     return encodeURIComponent(lines[lang].join('\n'));
 }
 
-const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+function toggleSettingsPanel() {
+    const panel = document.getElementById('settings-panel');
+    const overlay = document.getElementById('overlay');
+    const isOpen = panel.classList.contains('open');
+    panel.classList.toggle('open');
+    overlay.classList.toggle('open');
+}
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchPrayerTimes();
+
+    document.getElementById('gear-btn').addEventListener('click', toggleSettingsPanel);
+    document.getElementById('overlay').addEventListener('click', toggleSettingsPanel);
 
     document.getElementById('time-format-toggle').addEventListener('change', (e) => {
         is12Hour = e.target.checked;
