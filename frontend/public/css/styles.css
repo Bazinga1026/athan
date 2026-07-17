@@ -486,18 +486,17 @@ footer {
     .settings-panel {
         position: absolute;
         top: calc(100% + 6px);
-        right: 0;
         z-index: 100;
         width: 260px;
     }
 
     body:not(.ltr) .settings-panel {
-        right: 0;
-        left: auto;
+        left: 0;
+        right: auto;
     }
 
     .ltr .settings-panel {
-        left: 0;
-        right: auto;
+        right: 0;
+        left: auto;
     }
 }
