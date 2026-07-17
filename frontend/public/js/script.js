@@ -316,12 +316,15 @@ async function fetchPrayerTimes(city, country) {
             prayerTimes = data.data.timings;
             currentCity = city;
             currentCountry = country;
-            document.getElementById('city').textContent = city + ', ' + country;
+            var selectEl = document.getElementById('location-select');
+            var opt = selectEl.options[selectEl.selectedIndex];
+            var cityName = opt ? opt.textContent.split(' - ')[0] : city;
+            document.getElementById('city').textContent = cityName + '، المملكة العربية السعودية';
             displayHijriDate();
             updatePrayerTimesDisplay();
             startTimer();
         } else {
-            document.getElementById('city').textContent = 'مدينة غير موجودة / City not found';
+            document.getElementById('city').textContent = 'مدينة غير موجودة';
         }
     } catch (error) {
         console.error('Error fetching prayer times:', error);
@@ -439,9 +442,13 @@ function startTimer() {
 
 function getShareText() {
     const lang = isEnglish ? 'en' : 'ar';
+    var selectEl = document.getElementById('location-select');
+    var opt = selectEl.options[selectEl.selectedIndex];
+    var cityNameAr = opt ? opt.textContent.split(' - ')[0] : currentCity;
+    var cityNameEn = opt ? opt.value : currentCity;
     const lines = {
         ar: [
-            'مواقيت الصلاة - ' + currentCity,
+            'مواقيت الصلاة - ' + cityNameAr,
             'الفجر: ' + formatTimeDisplay(prayerTimes.Fajr),
             'الظهر: ' + formatTimeDisplay(prayerTimes.Dhuhr),
             'العصر: ' + formatTimeDisplay(prayerTimes.Asr),
@@ -449,7 +456,7 @@ function getShareText() {
             'العشاء: ' + formatTimeDisplay(prayerTimes.Isha)
         ],
         en: [
-            'Prayer Times - ' + currentCity,
+            'Prayer Times - ' + cityNameEn,
             'Fajr: ' + formatTimeDisplay(prayerTimes.Fajr),
             'Dhuhr: ' + formatTimeDisplay(prayerTimes.Dhuhr),
             'Asr: ' + formatTimeDisplay(prayerTimes.Asr),
@@ -496,18 +503,10 @@ document.addEventListener('DOMContentLoaded', () => {
         window.open('https://twitter.com/intent/tweet?text=' + text, '_blank');
     });
 
-    var locationInput = document.getElementById('location-input');
-    var locationGoBtn = document.getElementById('location-go-btn');
+    var locationSelect = document.getElementById('location-select');
 
-    locationGoBtn.addEventListener('click', () => {
-        var city = locationInput.value.trim();
-        if (city) fetchPrayerTimes(city, currentCountry);
-    });
-
-    locationInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-            var city = locationInput.value.trim();
-            if (city) fetchPrayerTimes(city, currentCountry);
-        }
+    locationSelect.addEventListener('change', () => {
+        var city = locationSelect.value;
+        fetchPrayerTimes(city, 'Saudi Arabia');
     });
 });

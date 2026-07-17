@@ -92,47 +92,24 @@ header h1 {
     flex-wrap: wrap;
 }
 
-.location-input-wrap {
-    display: flex;
-    align-items: center;
+.location-select {
     background: var(--btn-bg);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: background 0.3s;
-}
-
-.location-input {
-    background: transparent;
+    color: var(--text);
     border: none;
     outline: none;
-    color: var(--text);
     font-family: 'Cairo', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     padding: 8px 12px;
-    width: 130px;
-    direction: ltr;
-}
-
-.location-input::placeholder {
-    color: var(--text-faint);
-}
-
-.location-go-btn {
-    background: #5A7D7C;
-    border: none;
-    color: white;
-    padding: 8px 12px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
-    transition: opacity 0.2s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    direction: rtl;
+    transition: background 0.3s;
 }
 
-.location-go-btn:hover {
-    opacity: 0.8;
+.location-select option {
+    background: var(--panel);
+    color: var(--text);
 }
 
 .lang-btn, .theme-btn {
