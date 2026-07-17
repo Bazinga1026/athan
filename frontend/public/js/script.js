@@ -8,8 +8,6 @@ let isDark = true;
 
 const translations = {
     ar: {
-        title: 'مواقيت الصلاة',
-        city: 'الرياض، المملكة العربية السعودية',
         footer: 'مواقيت الصلاة للرياض | حسب طريقة أم القرى',
         langBtn: 'EN',
         timerStatusCountdown: 'الوقت المتبقي للأذان',
@@ -28,8 +26,6 @@ const translations = {
         }
     },
     en: {
-        title: 'Prayer Times',
-        city: 'Riyadh, Saudi Arabia',
         footer: 'Prayer Times for Riyadh | Umm Al-Qura Method',
         langBtn: 'عر',
         timerStatusCountdown: 'Time Until Adhan',
@@ -61,8 +57,6 @@ function tPrayer(name) {
 
 function updateLanguage() {
     document.getElementById('lang-btn').textContent = t('langBtn');
-    document.getElementById('title').textContent = t('title');
-    document.getElementById('city').textContent = t('city');
     document.getElementById('footer-text').textContent = t('footer');
     document.getElementById('fajr-name').textContent = tPrayer('Fajr');
     document.getElementById('dhuhr-name').textContent = tPrayer('Dhuhr');
@@ -127,15 +121,9 @@ async function fetchPrayerTimes(city, country) {
             prayerTimes = data.data.timings;
             currentCity = city;
             currentCountry = country;
-            var selectEl = document.getElementById('location-select');
-            var opt = selectEl.options[selectEl.selectedIndex];
-            var cityName = opt ? opt.textContent.split(' - ')[0] : city;
-            document.getElementById('city').textContent = cityName + '، المملكة العربية السعودية';
             displayHijriDate();
             updatePrayerTimesDisplay();
             startTimer();
-        } else {
-            document.getElementById('city').textContent = 'مدينة غير موجودة';
         }
     } catch (error) {
         console.error('Error fetching prayer times:', error);
