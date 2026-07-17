@@ -298,20 +298,30 @@ function displayDailyHadith() {
     document.getElementById('dua-source').textContent = fixed.source;
 }
 
-async function fetchPrayerTimes() {
+let currentCity = 'Riyadh';
+let currentCountry = 'Saudi Arabia';
+
+async function fetchPrayerTimes(city, country) {
+    city = city || currentCity;
+    country = country || currentCountry;
     try {
         const today = new Date();
         const dateStr = today.toISOString().split('T')[0];
-        const url = `https://api.aladhan.com/v1/timingsByCity/${dateStr}?city=Riyadh&country=Saudi+Arabia&method=${METHOD}`;
+        const url = `https://api.aladhan.com/v1/timingsByCity/${dateStr}?city=${encodeURIComponent(city)}&country=${encodeURIComponent(country)}&method=${METHOD}`;
 
         const response = await fetch(url);
         const data = await response.json();
 
         if (data.code === 200) {
             prayerTimes = data.data.timings;
+            currentCity = city;
+            currentCountry = country;
+            document.getElementById('city').textContent = city + ', ' + country;
             displayHijriDate();
             updatePrayerTimesDisplay();
             startTimer();
+        } else {
+            document.getElementById('city').textContent = 'مدينة غير موجودة / City not found';
         }
     } catch (error) {
         console.error('Error fetching prayer times:', error);
@@ -431,7 +441,7 @@ function getShareText() {
     const lang = isEnglish ? 'en' : 'ar';
     const lines = {
         ar: [
-            'مواقيت الصلاة - الرياض',
+            'مواقيت الصلاة - ' + currentCity,
             'الفجر: ' + formatTimeDisplay(prayerTimes.Fajr),
             'الظهر: ' + formatTimeDisplay(prayerTimes.Dhuhr),
             'العصر: ' + formatTimeDisplay(prayerTimes.Asr),
@@ -439,7 +449,7 @@ function getShareText() {
             'العشاء: ' + formatTimeDisplay(prayerTimes.Isha)
         ],
         en: [
-            'Prayer Times - Riyadh',
+            'Prayer Times - ' + currentCity,
             'Fajr: ' + formatTimeDisplay(prayerTimes.Fajr),
             'Dhuhr: ' + formatTimeDisplay(prayerTimes.Dhuhr),
             'Asr: ' + formatTimeDisplay(prayerTimes.Asr),
@@ -484,5 +494,20 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!prayerTimes) return;
         var text = getShareText();
         window.open('https://twitter.com/intent/tweet?text=' + text, '_blank');
+    });
+
+    var locationInput = document.getElementById('location-input');
+    var locationGoBtn = document.getElementById('location-go-btn');
+
+    locationGoBtn.addEventListener('click', () => {
+        var city = locationInput.value.trim();
+        if (city) fetchPrayerTimes(city, currentCountry);
+    });
+
+    locationInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            var city = locationInput.value.trim();
+            if (city) fetchPrayerTimes(city, currentCountry);
+        }
     });
 });
