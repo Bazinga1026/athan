@@ -4,12 +4,41 @@
     box-sizing: border-box;
 }
 
+[data-theme="dark"] {
+    --bg: #232C33;
+    --text: #eee;
+    --text-muted: #8899a6;
+    --panel-bg: #3F4A53;
+    --panel-shadow: #2d363d;
+    --row-border: #4d5a64;
+    --text-dim: #ccc;
+    --text-faint: #99aabb;
+    --timer-muted: #667788;
+    --btn-bg: #3F4A53;
+    --btn-text: #ccc;
+}
+
+[data-theme="light"] {
+    --bg: #f0f2f5;
+    --text: #1a1a1a;
+    --text-muted: #555;
+    --panel-bg: #ffffff;
+    --panel-shadow: #d0d0d0;
+    --row-border: #e0e0e0;
+    --text-dim: #333;
+    --text-faint: #666;
+    --timer-muted: #888;
+    --btn-bg: #ddd;
+    --btn-text: #333;
+}
+
 body {
     font-family: 'Cairo', sans-serif;
-    background: #232C33;
+    background: var(--bg);
     min-height: 100vh;
-    color: #eee;
+    color: var(--text);
     direction: rtl;
+    transition: background 0.3s, color 0.3s;
 }
 
 body.ltr {
@@ -34,13 +63,13 @@ header {
 header h1 {
     font-size: 2.2rem;
     font-weight: 700;
-    color: white;
+    color: var(--text);
     margin-bottom: 8px;
 }
 
 .city {
     font-size: 1rem;
-    color: #8899a6;
+    color: var(--text-muted);
     margin-bottom: 15px;
 }
 
@@ -58,40 +87,55 @@ header h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 30px;
 }
 
-.lang-btn {
-    background: #3F4A53;
-    color: #ccc;
+.lang-btn, .theme-btn {
+    background: var(--btn-bg);
+    color: var(--btn-text);
     border: none;
-    padding: 8px 18px;
+    padding: 8px 14px;
     border-radius: 8px;
     font-family: 'Cairo', sans-serif;
     font-size: 0.85rem;
     font-weight: 700;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
 }
 
-.lang-btn:hover {
+.lang-btn:hover, .theme-btn:hover {
     background: #5A7D7C;
     color: white;
 }
+
+.icon-sun, .icon-moon {
+    font-size: 1.1rem;
+    line-height: 1;
+}
+
+[data-theme="dark"] .icon-sun { display: inline; }
+[data-theme="dark"] .icon-moon { display: none; }
+[data-theme="light"] .icon-sun { display: none; }
+[data-theme="light"] .icon-moon { display: inline; }
 
 .time-toggle {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #3F4A53;
+    background: var(--btn-bg);
     padding: 8px 14px;
     border-radius: 8px;
 }
 
 .toggle-label {
     font-size: 0.85rem;
-    color: #99aabb;
+    color: var(--text-faint);
     font-weight: 700;
     min-width: 16px;
     text-align: center;
@@ -146,10 +190,11 @@ input:checked + .slider:before {
 .prayers-panel {
     width: 220px;
     flex-shrink: 0;
-    background: #3F4A53;
-    box-shadow: 3px 3px 0 #2d363d;
+    background: var(--panel-bg);
+    box-shadow: 3px 3px 0 var(--panel-shadow);
     border-radius: 12px;
     overflow: hidden;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .prayer-row {
@@ -157,7 +202,7 @@ input:checked + .slider:before {
     justify-content: space-between;
     align-items: center;
     padding: 15px 18px;
-    border-bottom: 1px solid #4d5a64;
+    border-bottom: 1px solid var(--row-border);
     transition: background 0.2s;
 }
 
@@ -177,28 +222,29 @@ input:checked + .slider:before {
 .prayer-name {
     font-size: 1rem;
     font-weight: 700;
-    color: #ccc;
+    color: var(--text-dim);
 }
 
 .prayer-time {
     font-size: 1rem;
     font-weight: 600;
-    color: #99aabb;
+    color: var(--text-faint);
     direction: ltr;
 }
 
 .timer-panel {
     flex: 1;
-    background: #3F4A53;
-    color: white;
-    padding: 60px 40px;
+    background: var(--panel-bg);
+    color: var(--text);
+    padding: 50px 40px 30px;
     text-align: center;
-    box-shadow: 3px 3px 0 #2d363d;
+    box-shadow: 3px 3px 0 var(--panel-shadow);
     border-radius: 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: background 0.3s, box-shadow 0.3s;
 }
 
 .timer-status {
@@ -213,7 +259,7 @@ input:checked + .slider:before {
 .timer {
     font-size: 5rem;
     font-weight: 700;
-    color: white;
+    color: var(--text);
     font-family: 'Cairo', monospace;
     letter-spacing: 3px;
     margin-bottom: 30px;
@@ -221,13 +267,82 @@ input:checked + .slider:before {
 
 .next-prayer {
     font-size: 1.1rem;
-    color: #8899a6;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.share-bar {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+.share-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s, opacity 0.2s;
+    color: white;
+}
+
+.share-btn:hover {
+    transform: scale(1.1);
+    opacity: 0.85;
+}
+
+.share-btn.whatsapp {
+    background: #25D366;
+}
+
+.share-btn.twitter {
+    background: #000;
+}
+
+.dua-section {
+    margin-top: 30px;
+}
+
+.dua-card {
+    background: var(--panel-bg);
+    box-shadow: 3px 3px 0 var(--panel-shadow);
+    border-radius: 12px;
+    padding: 24px 28px;
+    text-align: center;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.dua-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #5A7D7C;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+}
+
+.dua-text {
+    font-size: 1.15rem;
+    line-height: 2;
+    color: var(--text);
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.dua-source {
+    font-size: 0.85rem;
+    color: var(--text-muted);
     font-weight: 600;
 }
 
 footer {
     text-align: center;
-    color: #667788;
+    color: var(--timer-muted);
     font-size: 0.85rem;
     padding: 30px 0 10px;
 }
@@ -247,7 +362,7 @@ footer {
     }
 
     .timer-panel {
-        padding: 40px 20px;
+        padding: 40px 20px 25px;
     }
 
     .timer {
@@ -276,6 +391,10 @@ footer {
 
     .prayer-time {
         font-size: 0.95rem;
+    }
+
+    .settings-bar {
+        gap: 8px;
     }
 }
 
