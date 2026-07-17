@@ -14,7 +14,7 @@ A clean, minimal Arabic website that displays accurate prayer times for Riyadh, 
 
 ## Live Demo
 
-[View Live Site](https://yourusername.github.io/athan/)
+[View Live Site]([https://yourusername.github.io/athan/](https://athan.up.railway.app/))
 
 ## Tech Stack
 
@@ -23,23 +23,6 @@ A clean, minimal Arabic website that displays accurate prayer times for Riyadh, 
 - Vanilla JavaScript
 - [Aladhan API](https://aladhan.com/prayer-times-api) for prayer times
 
-## Getting Started
-
-1. Clone the repo:
-   ```bash
-   git clone https://github.com/yourusername/athan.git
-   ```
-
-2. Open `index.html` in your browser
-
-No build step required.
-
-## GitHub Pages Deployment
-
-1. Push to GitHub
-2. Go to **Settings > Pages**
-3. Select **main branch** as source
-4. Your site will be live at `https://yourusername.github.io/athan/`
 
 ## Calculation Method
 
