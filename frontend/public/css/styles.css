@@ -202,6 +202,15 @@ input:checked + .slider:before {
     transform: translateX(18px);
 }
 
+body:not(.ltr) .slider:before {
+    left: auto;
+    right: 3px;
+}
+
+body:not(.ltr) input:checked + .slider:before {
+    transform: translateX(-18px);
+}
+
 .main-content {
     display: flex;
     gap: 30px;
@@ -323,42 +332,6 @@ input:checked + .slider:before {
 
 .share-btn.twitter {
     background: #000;
-}
-
-.dua-section {
-    margin-top: 30px;
-}
-
-.dua-card {
-    background: var(--panel-bg);
-    box-shadow: 3px 3px 0 var(--panel-shadow);
-    border-radius: 12px;
-    padding: 24px 28px;
-    text-align: center;
-    transition: background 0.3s, box-shadow 0.3s;
-}
-
-.dua-label {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #5A7D7C;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 14px;
-}
-
-.dua-text {
-    font-size: 1.15rem;
-    line-height: 2;
-    color: var(--text);
-    font-weight: 600;
-    margin-bottom: 12px;
-}
-
-.dua-source {
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    font-weight: 600;
 }
 
 footer {

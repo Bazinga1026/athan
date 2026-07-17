@@ -19,7 +19,6 @@ const translations = {
         nowText: 'آن',
         nextPrayerLabel: 'الصلاة القادمة',
         loadError: 'خطأ في تحميل البيانات',
-        hadithLabel: 'حديث اليوم',
         prayers: {
             Fajr: 'الفجر',
             Dhuhr: 'الظهر',
@@ -40,7 +39,6 @@ const translations = {
         nowText: 'now',
         nextPrayerLabel: 'Next Prayer',
         loadError: 'Error loading data',
-        hadithLabel: 'Hadith of the Day',
         prayers: {
             Fajr: 'Fajr',
             Dhuhr: 'Dhuhr',
@@ -50,182 +48,6 @@ const translations = {
         }
     }
 };
-
-const dailyHadith = [
-    {
-        ar: '«إنما الأعمال بالنيات، وإنما لكل امرئ ما نوى»',
-        en: '"Actions are but by intentions, and every person shall have only what they intended."',
-        source_ar: 'رواه البخاري',
-        source_en: 'Sahih al-Bukhari'
-    },
-    {
-        ar: '«إن الله جميل يحب الجمال»',
-        en: '"Indeed, Allah is beautiful and loves beauty."',
-        source_ar: 'رواه مسلم',
-        source_en: 'Sahih Muslim'
-    },
-    {
-        ar: '«المسلم من سلم المسلمون من لسانه ويده»',
-        en: '"A Muslim is one from whose tongue and hands the Muslims are safe."',
-        source_ar: 'رواه البخاري ومسلم',
-        source_en: 'Sahih al-Bukhari & Muslim'
-    },
-    {
-        ar: '«خيركم من تعلم القرآن وعلمه»',
-        en: '"The best among you are those who learn the Quran and teach it."',
-        source_ar: 'رواه البخاري',
-        source_en: 'Sahih al-Bukhari'
-    },
-    {
-        ar: '«لا يُؤمِنُ أحدُكم حتى يُحبَّ لأخيه ما يُحبُّ لنفسه»',
-        en: '"None of you truly believes until he loves for his brother what he loves for himself."',
-        source_ar: 'رواه البخاري ومسلم',
-        source_en: 'Sahih al-Bukhari & Muslim'
-    },
-    {
-        ar: '«إن الله رفيقٌ يُحِبُّ الرِّفقَ في الأمرِ كُلِّه»',
-        en: '"Indeed, Allah is gentle and loves gentleness in all matters."',
-        source_ar: 'رواه البخاري ومسلم',
-        source_en: 'Sahih al-Bukhari & Muslim'
-    },
-    {
-        ar: '«من كان يؤمن بالله واليوم الآخر فليقُلْ خيرًا أو ليصمتْ»',
-        en: '"Whoever believes in Allah and the Last Day should speak good or remain silent."',
-        source_ar: 'رواه البخاري ومسلم',
-        source_en: 'Sahih al-Bukhari & Muslim'
-    },
-    {
-        ar: '«الطهورُ شطرُ الإيمانِ»',
-        en: '"Cleanliness is half of faith."',
-        source_ar: 'رواه مسلم',
-        source_en: 'Sahih Muslim'
-    },
-    {
-        ar: '«الدُّعاءُ هوُ العبادةُ»',
-        en: '"Supplication is the essence of worship."',
-        source_ar: 'رواه الترمذي',
-        source_en: 'Jami al-Tirmidhi'
-    },
-    {
-        ar: '«أحبُّ الأعمالِ إلى اللهِ أدومُها وإن قلَّ»',
-        en: '"The most beloved of deeds to Allah are the most consistent, even if they are small."',
-        source_ar: 'رواه البخاري ومسلم',
-        source_en: 'Sahih al-Bukhari & Muslim'
-    },
-    {
-        ar: '«مَنْ سَلَكَ طريقًا يَلتمِسُ فيهِ عِلمًا سهَّلَ اللهُ له طريقًا إلى الجنةِ»',
-        en: '"Whoever takes a path seeking knowledge, Allah will make easy for him a path to Paradise."',
-        source_ar: 'رواه مسلم',
-        source_en: 'Sahih Muslim'
-    },
-    {
-        ar: '«إنَّ اللهَ لا ينظُرُ إلى صُوَرِكم وأموالِكم ولكن ينظُرُ إلى قُلُوبِكم وأعمالِكم»',
-        en: '"Indeed, Allah does not look at your appearance or wealth, but rather at your hearts and your deeds."',
-        source_ar: 'رواه مسلم',
-        source_en: 'Sahih Muslim'
-    },
-    {
-        ar: '«世上最好的事情是信仰真主、追随先知、改善家庭关系、清淡饮食、夜间礼拜、黎明时分求饶恕»',
-        en: '"The best of you are those who feed others and greet those who greet them."',
-        source_ar: 'رواه البخاري',
-        source_en: 'Sahih al-Bukhari'
-    },
-    {
-        ar: '«إذا ماتَ الإنسانُ انقَطَعَ عنهُ عملُهُ إلاَّ من ثلاثةٍ إلاَّ من صدقةٍ جاريةٍ أو علمٍ يُنتَفعُ بهِ أو ولدٍ صالحٍ يَدعي له»',
-        en: '"When a person dies, their deeds end except for three: ongoing charity, beneficial knowledge, or a righteous child who prays for them."',
-        source_ar: 'رواه مسلم',
-        source_en: 'Sahih Muslim'
-    },
-    {
-        ar: '«اتَّقِ اللهَ حيثُما كنتَ وأَتْبِعِ السَّيِّئَةَ الحسنةَ تَمحُها وخالِقِ النّاسَ بخُلُقٍ حسنٍ»',
-        en: '"Fear Allah wherever you are, follow up a bad deed with a good one and it will erase it, and behave well towards people."',
-        source_ar: 'رواه الترمذي',
-        source_en: 'Jami al-Tirmidhi'
-    },
-    {
-        ar: '«أكملُ المؤمنينَ إيمانًا أحسنُهم خُلُقًا»',
-        en: '"The most complete believers in faith are those with the best character."',
-        source_ar: 'رواه أبو داود والترمذي',
-        source_en: 'Sunan Abu Dawud & Tirmidhi'
-    },
-    {
-        ar: '«لا تغضَبْ» فتَكرَّرَ她说three times，He said: «استعنِ بالله»',
-        en: '"Do not get angry." He repeated it three times. He said: "Seek Allah\'s help."',
-        source_ar: 'رواه البخاري',
-        source_en: 'Sahih al-Bukhari'
-    },
-    {
-        ar: '«من صلَّى عليَّ صلاةً صلَّى اللهُ عليهِ بها عشرًا»',
-        en: '"Whoever sends a blessing upon me, Allah will send ten blessings upon him."',
-        source_ar: 'رواه مسلم',
-        source_en: 'Sahih Muslim'
-    },
-    {
-        ar: '«المؤمنُ للمؤمنِ ك(Building) بنيانُ يَشورِكُ بعضُهُ بعضًا»',
-        en: '"The believer to the believer is like a building whose parts support each other."',
-        source_ar: 'رواه البخاري ومسلم',
-        source_en: 'Sahih al-Bukhari & Muslim'
-    },
-    {
-        ar: '«إنَّ اللهَ كَريمٌ يُحِبُّ الكَريمَ وَيُحِبُّ مَعاليَ الأُمورِ وَيَكرَهُ سَفاسِفَها»',
-        en: '"Indeed, Allah is generous and loves the generous, loves lofty matters and dislikes petty ones."',
-        source_ar: 'رواه أحمد',
-        source_en: 'Musnad Ahmad'
-    },
-    {
-        ar: '«خيرُ الناسِ أنفَعُهم للناسِ»',
-        en: '"The best of people are those most beneficial to people."',
-        source_ar: 'رواه الطبراني',
-        source_en: 'al-Tabarani'
-    },
-    {
-        ar: '«الدُّنيا سجنُ المؤمنِ وجنةُ الكافرِ»',
-        en: '"The world is a prison for the believer and a paradise for the disbeliever."',
-        source_ar: 'رواه مسلم',
-        source_en: 'Sahih Muslim'
-    },
-    {
-        ar: '«لا يُكْمِلُ المؤمنُ إيمانَهُ حتى يُحِبَّ لأخيهِ ما يُحِبُّ لنفسِهِ مِنَ الخيرِ»',
-        en: '"A believer does not complete his faith until he loves for his brother what he loves for himself of goodness."',
-        source_ar: 'رواه أحمد',
-        source_en: 'Musnad Ahmad'
-    },
-    {
-        ar: '«إنَّما الأعمالُ بالنيّاتِ وإنّما لكلِّ امرئٍ ما نوى»',
-        en: '"Actions are judged by intentions, and every person shall have only what they intended."',
-        source_ar: 'رواه البخاري',
-        source_en: 'Sahih al-Bukhari'
-    },
-    {
-        ar: '«مَنْ كانَتِ الآخرةُ همَّهِ جعلَ اللهُ غِنَاهُ في قلبِهِ وجمعَ لَهُ شَملَهُ وأتَتْهُ الدنيا راغِمةً ومَنْ كانتِ الدنيا همَّهِ جعلَ اللهُ فَقرَ بينَ عَينَيهِ وفَرَّقَ شَملَهُ ولم يأتِهِ من الدنيا إلاّ ما قُضيَ له»',
-        en: '"Whoever makes the Hereafter his concern, Allah will place richness in his heart and bring his affairs together. Whoever makes the world his concern, Allah will place poverty between his eyes and scatter his affairs."',
-        source_ar: 'رواه الترمذي',
-        source_en: 'Jami al-Tirmidhi'
-    },
-    {
-        ar: '«أَلا أُخبِرُكم بأحبِّكم إليَّ وأقْرَبِكم مني مجلِسًا يومَ القيامةِ؟» حَسَناتُ الأكْوانِ، هُمُ الأكْثَرونَ حَسَناتٍ، أيُّهُمُ الأكْثَرونَ حَسَناتٍ»',
-        en: '"Shall I not tell you of those most beloved to me and closest to my seat on the Day of Resurrection? The best in character, the most consistent in good deeds."',
-        source_ar: 'رواه أبو داود والترمذي',
-        source_en: 'Sunan Abu Dawud & Tirmidhi'
-    },
-    {
-        ar: '«إنَّ اللهَ يُضيءُ لَهُ عَلَى يَدِيِّهِ إنَّ اللهَ كريمٌ يُحِبُّ الإحسانَ في كلِّ شيءٍ»',
-        en: '"Allah illuminates for him through his actions. Indeed, Allah is generous and loves excellence in everything."',
-        source_ar: 'رواه البخاري ومسلم',
-        source_en: 'Sahih al-Bukhari & Muslim'
-    }
-];
-
-function fixHadithText(h) {
-    if (isEnglish) {
-        return { text: h.en, source: h.source_en };
-    }
-    // Use ar text only if it has Arabic chars, otherwise fall back to English
-    if (/[ء-ي]/.test(h.ar)) {
-        return { text: h.ar, source: h.source_ar };
-    }
-    return { text: h.en, source: h.source_en };
-}
 
 function t(key) {
     const lang = isEnglish ? 'en' : 'ar';
@@ -242,7 +64,6 @@ function updateLanguage() {
     document.getElementById('title').textContent = t('title');
     document.getElementById('city').textContent = t('city');
     document.getElementById('footer-text').textContent = t('footer');
-    document.getElementById('dua-label').textContent = t('hadithLabel');
     document.getElementById('fajr-name').textContent = tPrayer('Fajr');
     document.getElementById('dhuhr-name').textContent = tPrayer('Dhuhr');
     document.getElementById('asr-name').textContent = tPrayer('Asr');
@@ -260,7 +81,6 @@ function updateLanguage() {
     }
 
     displayHijriDate();
-    displayDailyHadith();
 }
 
 const hijriMonthsAr = ['محرّم', 'صفر', 'ربيع الأول', 'ربيع الثاني', 'جمادى الأولى', 'جمادى الآخرة', 'رجب', 'شعبان', 'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'];
@@ -287,15 +107,6 @@ function displayHijriDate() {
     } else {
         document.getElementById('hijri-date').textContent = h.day + ' ' + hijriMonthsAr[h.month - 1] + ' ' + h.year + ' هـ';
     }
-}
-
-function displayDailyHadith() {
-    var today = new Date();
-    var dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
-    var hadith = dailyHadith[dayOfYear % dailyHadith.length];
-    var fixed = fixHadithText(hadith);
-    document.getElementById('dua-text').textContent = fixed.text;
-    document.getElementById('dua-source').textContent = fixed.source;
 }
 
 let currentCity = 'Riyadh';
@@ -471,7 +282,6 @@ const prayerOrder = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchPrayerTimes();
-    displayDailyHadith();
 
     document.getElementById('time-format-toggle').addEventListener('change', (e) => {
         is12Hour = e.target.checked;
