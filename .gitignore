@@ -1,11 +1,6 @@
 .DS_Store
 Thumbs.db
 desktop.ini
-*.png
-*.jpg
-*.jpeg
-*.gif
-*.svg
 node_modules/
 .env
 .vscode/
