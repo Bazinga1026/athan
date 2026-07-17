@@ -2,7 +2,7 @@ const METHOD = 4;
 
 let prayerTimes = null;
 let timerInterval = null;
-let is12Hour = false;
+let is12Hour = true;
 let isEnglish = false;
 
 const translations = {
