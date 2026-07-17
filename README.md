@@ -6,7 +6,7 @@ A clean, minimal Arabic website that displays accurate prayer times for Riyadh, 
 
 - **5 Prayer Times**: Fajr, Dhuhr, Asr, Maghrib, Isha
 - **Smart Timer**: Countdown before Adhan, 30-min countup after Adhan
-- **Hijri Date**: Accurate Kuwaiti algorithm (Umm Al-Qura based)
+- **Hijri Date**: Accurate algorithm (Umm Al-Qura based)
 - **Bilingual**: Arabic / English toggle
 - **Time Format**: 24h / 12h (AM/PM) toggle
 - **Responsive**: Works on desktop, tablet, and mobile
