@@ -14,7 +14,7 @@ A clean, minimal Arabic website that displays accurate prayer times for Riyadh, 
 
 ## Live Demo
 
-[View Live Site]([https://yourusername.github.io/athan/](https://athan.up.railway.app/))
+[View Live Site](https://yourusername.github.io/athan/](https://athan.up.railway.app/))
 
 ## Tech Stack
 
