@@ -33,7 +33,7 @@
 }
 
 body {
-    font-family: 'Cairo', sans-serif;
+    font-family: 'IBM Plex Sans Arabic', 'IBM Plex Sans', sans-serif;
     background: var(--bg);
     min-height: 100vh;
     color: var(--text);
@@ -43,6 +43,7 @@ body {
 
 body.ltr {
     direction: ltr;
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .container {
@@ -82,15 +83,25 @@ body.ltr {
     color: var(--text);
     border: none;
     outline: none;
-    font-family: 'Cairo', sans-serif;
+    font-family: inherit;
     font-size: 0.85rem;
-    font-weight: 600;
-    padding: 10px 12px;
+    font-weight: 500;
+    padding: 10px 28px 10px 12px;
     border-radius: 8px;
     cursor: pointer;
     direction: rtl;
     transition: background 0.3s;
-    appearance: auto;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%239AA5AC'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+}
+
+body:not(.ltr) .location-select {
+    background-position: right 10px center;
+    padding: 10px 12px 10px 28px;
 }
 
 .location-select option {
@@ -166,7 +177,7 @@ body:not(.ltr) .gear-btn {
 
 .settings-label {
     font-size: 0.9rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--text-dim);
 }
 
@@ -176,9 +187,9 @@ body:not(.ltr) .gear-btn {
     border: none;
     padding: 8px 16px;
     border-radius: 8px;
-    font-family: 'Cairo', sans-serif;
+    font-family: inherit;
     font-size: 0.85rem;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -212,7 +223,7 @@ body:not(.ltr) .gear-btn {
 .toggle-label {
     font-size: 0.85rem;
     color: var(--text-faint);
-    font-weight: 700;
+    font-weight: 500;
     min-width: 16px;
     text-align: center;
 }
@@ -272,7 +283,7 @@ body:not(.ltr) input:checked + .slider:before {
     color: white;
     padding: 8px 24px;
     display: inline-block;
-    font-weight: 600;
+    font-weight: 500;
     border-radius: 8px;
     margin-bottom: 20px;
 }
@@ -316,15 +327,16 @@ body:not(.ltr) input:checked + .slider:before {
 
 .prayer-name {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #9AA5AC;
 }
 
 .prayer-time {
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     color: #9AA5AC;
     direction: ltr;
+    font-variant-numeric: tabular-nums;
 }
 
 .timer-panel {
@@ -345,7 +357,7 @@ body:not(.ltr) input:checked + .slider:before {
 .timer-status {
     font-size: 1.1rem;
     color: #5A7D7C;
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -353,9 +365,10 @@ body:not(.ltr) input:checked + .slider:before {
 
 .timer {
     font-size: 4.5rem;
-    font-weight: 700;
+    font-weight: 600;
     color: var(--text);
-    font-family: 'Cairo', monospace;
+    font-family: 'IBM Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
     letter-spacing: 3px;
     margin-bottom: 20px;
 }
@@ -363,7 +376,7 @@ body:not(.ltr) input:checked + .slider:before {
 .next-prayer {
     font-size: 1.1rem;
     color: var(--text-muted);
-    font-weight: 600;
+    font-weight: 500;
     margin-bottom: 20px;
 }
 
