@@ -74,6 +74,7 @@ body.ltr {
     align-items: center;
     margin-bottom: 24px;
     flex-wrap: nowrap;
+    position: relative;
 }
 
 .location-select {
@@ -482,16 +483,21 @@ footer {
 }
 
 @media (min-width: 701px) {
-    .settings-panel.open {
+    .settings-panel {
         position: absolute;
-        top: 60px;
-        right: 20px;
+        top: calc(100% + 6px);
+        right: 0;
         z-index: 100;
         width: 260px;
     }
 
-    body:not([dir="rtl"]) .settings-panel.open {
+    body:not(.ltr) .settings-panel {
+        right: 0;
+        left: auto;
+    }
+
+    .ltr .settings-panel {
+        left: 0;
         right: auto;
-        left: 20px;
     }
 }
