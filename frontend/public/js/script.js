@@ -210,7 +210,7 @@ function updateTimer() {
     const timeUntilNext = state.nextPrayerTime - currentSeconds;
     const timeSincePrev = currentSeconds - state.previousPrayerTime;
 
-    highlightPrayer(state.nextPrayer);
+    highlightPrayer(timeSincePrev <= 1800 ? state.previousPrayer : state.nextPrayer);
 
     if (timeSincePrev <= 1800) {
         statusEl.textContent = t('timerStatusElapsed');
